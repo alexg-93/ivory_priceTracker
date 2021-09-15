@@ -4,9 +4,9 @@ from email.mime.text import MIMEText
 from bidi.algorithm import get_display
 
 def send_email(product_title,product_price,URL):
-    gmailUser = 'gordienko1993@gmail.com'
-    gmailPassword = 'tkfxxux1993'
-    recipient = 'alexgordienko1993@gmail.com'
+    gmailUser = 'YOUR_EMAIL@gmail.com'
+    gmailPassword = 'YOUR_Password'
+    recipient = 'SEND_TO@gmail.com'
     subject = f"Price Alert for {get_display(product_title)} "
     message = f"Hey!\n Product : {get_display(product_title)} is now on SALE!\n Price : ₪{product_price}\nLink : {URL} Hurry up don't miss that!"
     
