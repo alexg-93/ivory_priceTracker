@@ -25,5 +25,7 @@ def send_email(product_title,product_price,URL):
         mailServer.sendmail(gmailUser, recipient, msg.as_string())
         mailServer.close()
         print ('Email sent!')
+      
+       
     except:
-        print ('Something went wrong...')
+        print ('Something went wrong...Email not sent!')
