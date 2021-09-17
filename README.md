@@ -9,5 +9,5 @@ price tracker for https://www.ivory.co.il/ made with python & beautifulSoup web 
   ```in the next update will add a feature to search an product by KEYWORD```
 
 # Usage 
- ```pip install -r requirements.txt``` and ```then python3 price_tracker.py```
+  open the terminal and type ```pip install -r requirements.txt``` and then ```python3 price_tracker.py```
  
