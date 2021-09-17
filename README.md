@@ -1,5 +1,5 @@
 # ivory_priceTracker
-price tracker for https://www.ivory.co.il/
+price tracker for https://www.ivory.co.il/ made with python & beautifulSoup web scraping library and more.
 
  Currently supports:
   * Recieving product title and current price and track price & Get notified by Email when price is fell down to your required price. *(by URL)*
