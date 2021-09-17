@@ -7,10 +7,9 @@ from email_sender import send_email
 from tabulate import tabulate
 from colorama import Fore, Style
 
-
  
 #Track prices for specific product and get alert by email when price reach price you're looking for
-def check_price_of_product_and_notify(URL):
+def check_price_of_product_and_notify(URL,required_price):
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.find(id="titleProd").get_text()
@@ -21,17 +20,14 @@ def check_price_of_product_and_notify(URL):
     products = [['Product','Price (₪)','Link'],[get_display(title),f"₪{price}",URL]]
     print(Fore.GREEN + tabulate(products, tablefmt='fancy_grid') + Style.RESET_ALL)
     
-    alert = input('Do you want to get alert by email when price down to the price you have selected? Y/N\n')
-    if alert == 'Y' or alert == 'y':
-        required_price = input('Type price to alert\n')
-        required_price = int(required_price)
-        if(price<=required_price):
+
+   
+    if(price<=required_price):
              send_email(get_display(title.strip()),price,URL)
              print(Fore.RED + f"PRICE IS DOWN TO {price}!")
              return False
+    return True
         
-    else:
-        pass
 
                
 #function to check products of specific category
@@ -154,8 +150,24 @@ key=int(key)
 
 if key == 1:
     URL = input('Enter URL Address\nWaiting for URL..')
+    required_price = input(Fore.YELLOW + 'Type price when to alert\n' + Style.RESET_ALL)
+    if required_price.isnumeric():
+        required_price = int(required_price)
+    else:
+        raise ValueError(Fore.RED + 'required_price is not an int number!' + Style.RESET_ALL)
+    
+    how_often_to_check_price = input(Fore.YELLOW + 'Set time in seconds to re-check the price of the product\ne.g 1hour=3600seconds\n' + Style.RESET_ALL)
+    if how_often_to_check_price.isnumeric():
+        how_often_to_check_price = int(how_often_to_check_price)
+    else:
+        raise ValueError(Fore.RED + "time input is not an number!" + Style.RESET_ALL)
+        
     try:
-            check_price_of_product_and_notify(URL)
+         search = True
+         while search:
+            search = check_price_of_product_and_notify(URL,required_price)
+            time.sleep(how_often_to_check_price)
+            
     except:
         print(Fore.RED + "Something went wrong" + Style.RESET_ALL)
         exit(1)
