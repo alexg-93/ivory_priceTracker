@@ -1,4 +1,4 @@
-# ivory_priceTracker
+# ivory price Tracker
 price tracker for https://www.ivory.co.il/ made with python & beautifulSoup web scraping library and more.
 
  Currently supports:
