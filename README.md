@@ -11,3 +11,4 @@ price tracker for https://www.ivory.co.il/ made with python & beautifulSoup web 
 # Usage 
   open the terminal and type ```pip install -r requirements.txt``` and then ```python3 price_tracker.py```
  
+  ***dont forget to add your personal email username+password 
